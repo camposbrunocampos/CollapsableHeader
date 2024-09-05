@@ -9,7 +9,7 @@ public struct CollapsibleHeaderList: View {
     @State private var animationDuration: TimeInterval = 0.2
     @State private var lastAnimationDate: Date?
     private var expandedHeight: CGFloat = 40.0
-
+    
     // MARK: - View
     public var body: some View {
         VStack {
@@ -24,18 +24,16 @@ public struct CollapsibleHeaderList: View {
                     }
                 }
             }
-            .scrollOffsetID("Foo")
         }.environment(\.defaultMinListRowHeight, 0)
-        .modifier(ListOffsetModifier(id: "1"))
-        .listStyle(.plain)
-        .onPreferenceChange(ListOffsetKey.self) { offsetInfo in
-            print("@@ offset info is\(offsetInfo?.offset)")
-            if let offsetInfo {
-                updateHeaderHeightOnOffsetChange(offsetInfo)
+            .modifier(ListOffsetModifier(id: "foo"))
+            .listStyle(.plain)
+            .onPreferenceChange(ListOffsetKey.self) { offsetInfo in
+                if let offsetInfo {
+                    updateHeaderHeightOnOffsetChange(offsetInfo)
+                }
             }
-        }
     }
-
+    
     private func updateHeaderHeightOnOffsetChange(_ offsetInfo: ScrollOffsetInfo) {
         DispatchQueue.main.async {
             let isInitialPosition = offsetInfo.offset == 0 && lastOffset == 0
@@ -48,7 +46,6 @@ public struct CollapsibleHeaderList: View {
             
             switch scrollDirection(offsetInfo.offset) {
             case .up:
-                print("@@ will scroll up")
                 collapseHeader()
                 
             case .down:
@@ -59,45 +56,45 @@ public struct CollapsibleHeaderList: View {
             }
         }
     }
-
-        func expandHeader() {
-            withAnimation(.easeOut(duration: animationDuration)) {
-                currentHeight = expandedHeight
-                lastAnimationDate = Date()
-            }
+    
+    func expandHeader() {
+        withAnimation(.easeOut(duration: animationDuration)) {
+            currentHeight = expandedHeight
+            lastAnimationDate = Date()
         }
-
-        func collapseHeader() {
-            withAnimation(.easeOut(duration: animationDuration)) {
-                currentHeight = 0
-                lastAnimationDate = Date()
-            }
+    }
+    
+    func collapseHeader() {
+        withAnimation(.easeOut(duration: animationDuration)) {
+            currentHeight = 0
+            lastAnimationDate = Date()
         }
-
-        func didFinishLastAnimation() -> Bool {
-            guard let lastAnimationDate else {
-                return true
-            }
-
-            return abs(lastAnimationDate.timeIntervalSinceNow) > animationDuration
+    }
+    
+    func didFinishLastAnimation() -> Bool {
+        guard let lastAnimationDate else {
+            return true
         }
-
-        func scrollDirection(_ currentOffset: CGFloat) -> ScrollDirection {
-            let scrollOffsetDifference = abs(currentOffset) - abs(lastOffset)
-            let threshold = 1.0
-
-            if abs(scrollOffsetDifference) > threshold {
-                let status: ScrollDirection = scrollOffsetDifference > 0
-                ? .up(scrollOffsetDifference)
-                : .down(scrollOffsetDifference)
-
-                lastOffset = currentOffset
-                return status
-            } else {
-                lastOffset = currentOffset
-                return .insignificant
-            }
+        
+        return abs(lastAnimationDate.timeIntervalSinceNow) > animationDuration
+    }
+    
+    func scrollDirection(_ currentOffset: CGFloat) -> ScrollDirection {
+        let scrollOffsetDifference = abs(currentOffset) - abs(lastOffset)
+        let threshold = 1.0
+        
+        if abs(scrollOffsetDifference) > threshold {
+            let status: ScrollDirection = scrollOffsetDifference > 0
+            ? .up(scrollOffsetDifference)
+            : .down(scrollOffsetDifference)
+            
+            lastOffset = currentOffset
+            return status
+        } else {
+            lastOffset = currentOffset
+            return .insignificant
         }
+    }
 }
 
 struct ListOffsetModifier: ViewModifier {
