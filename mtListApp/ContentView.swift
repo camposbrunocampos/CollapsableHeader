@@ -38,10 +38,8 @@ public struct CollapsibleHeaderList: View {
                 }
             }
         }.onPreferenceChange(ScrollOffsetInfoPreferenceKey.self) { offsetInfo in
-            print("@@ will update offset \(offsetInfo)")
             updateHeaderHeightOnOffsetChange(offsetInfo)
         }
-
     }
 
     private func calculateContentOffset(fromOutsideProxy outsideProxy: GeometryProxy, insideProxy: GeometryProxy) -> CGFloat {
