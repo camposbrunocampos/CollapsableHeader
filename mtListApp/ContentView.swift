@@ -124,21 +124,12 @@ enum ScrollDirection: Equatable {
     case insignificant
 }
 
-// MARK: Entities
-struct ListOffsetKey: PreferenceKey {
-    typealias Value = ScrollOffsetInfo?
-    static var defaultValue: ScrollOffsetInfo = ScrollOffsetInfo(offset: 0, offsetToBottom: 0, scrollableContent: 0)
-
-    static func reduce(value: inout ScrollOffsetInfo?, nextValue: () -> ScrollOffsetInfo?) {
-        value = nextValue()
-    }
-}
-
 public struct ScrollOffsetInfo: Equatable {
     public let offset: CGFloat
     public let offsetToBottom: CGFloat
     public let scrollableContent: CGFloat
 }
+
 public struct ScrollOffsetInfoPreferenceKey: PreferenceKey {
     public static var defaultValue: ScrollOffsetInfo = ScrollOffsetInfo(offset: 0, offsetToBottom: 0, scrollableContent: 0)
 
