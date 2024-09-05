@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftUIScrollOffset
 
 @main
 struct mtListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CollapsibleHeaderList()
         }
     }
 }

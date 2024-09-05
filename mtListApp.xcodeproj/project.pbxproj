@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		646734CF2C00B11700F1BA7E /* DummyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646734CE2C00B11700F1BA7E /* DummyFile.swift */; };
+		64A660F02C4ADB8F00432F8D /* SwiftUIScrollOffset in Frameworks */ = {isa = PBXBuildFile; productRef = 64A660EF2C4ADB8F00432F8D /* SwiftUIScrollOffset */; };
 		64CBF6602BF7C9A400ABDA83 /* mtListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF65F2BF7C9A400ABDA83 /* mtListAppApp.swift */; };
 		64CBF6622BF7C9A400ABDA83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF6612BF7C9A400ABDA83 /* ContentView.swift */; };
 		64CBF6642BF7C9A500ABDA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64CBF6632BF7C9A500ABDA83 /* Assets.xcassets */; };
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		646734CE2C00B11700F1BA7E /* DummyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFile.swift; sourceTree = "<group>"; };
 		64CBF65C2BF7C9A400ABDA83 /* mtListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CBF65F2BF7C9A400ABDA83 /* mtListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mtListAppApp.swift; sourceTree = "<group>"; };
 		64CBF6612BF7C9A400ABDA83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A660F02C4ADB8F00432F8D /* SwiftUIScrollOffset in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64A660EE2C4ADB8F00432F8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		64CBF6532BF7C9A400ABDA83 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +89,7 @@
 				64CBF66F2BF7C9A500ABDA83 /* mtListAppTests */,
 				64CBF6792BF7C9A500ABDA83 /* mtListAppUITests */,
 				64CBF65D2BF7C9A400ABDA83 /* Products */,
+				64A660EE2C4ADB8F00432F8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +110,7 @@
 				64CBF6612BF7C9A400ABDA83 /* ContentView.swift */,
 				64CBF6632BF7C9A500ABDA83 /* Assets.xcassets */,
 				64CBF6652BF7C9A500ABDA83 /* Preview Content */,
+				646734CE2C00B11700F1BA7E /* DummyFile.swift */,
 			);
 			path = mtListApp;
 			sourceTree = "<group>";
@@ -143,6 +156,9 @@
 			dependencies = (
 			);
 			name = mtListApp;
+			packageProductDependencies = (
+				64A660EF2C4ADB8F00432F8D /* SwiftUIScrollOffset */,
+			);
 			productName = mtListApp;
 			productReference = 64CBF65C2BF7C9A400ABDA83 /* mtListApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +231,9 @@
 				Base,
 			);
 			mainGroup = 64CBF6532BF7C9A400ABDA83;
+			packageReferences = (
+				64A660ED2C4ADAF900432F8D /* XCRemoteSwiftPackageReference "SwiftUIScrollOffset" */,
+			);
 			productRefGroup = 64CBF65D2BF7C9A400ABDA83 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64CBF6622BF7C9A400ABDA83 /* ContentView.swift in Sources */,
+				646734CF2C00B11700F1BA7E /* DummyFile.swift in Sources */,
 				64CBF6602BF7C9A400ABDA83 /* mtListAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +602,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		64A660ED2C4ADAF900432F8D /* XCRemoteSwiftPackageReference "SwiftUIScrollOffset" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ciaranrobrien/SwiftUIScrollOffset.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64A660EF2C4ADB8F00432F8D /* SwiftUIScrollOffset */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64A660ED2C4ADAF900432F8D /* XCRemoteSwiftPackageReference "SwiftUIScrollOffset" */;
+			productName = SwiftUIScrollOffset;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 64CBF6542BF7C9A400ABDA83 /* Project object */;
 }
