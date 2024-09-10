@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64544AF42C9070B90006AE71 /* CollapsibleHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64544AF32C9070B90006AE71 /* CollapsibleHeaderViewModel.swift */; };
 		646734CF2C00B11700F1BA7E /* DummyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646734CE2C00B11700F1BA7E /* DummyFile.swift */; };
 		64A660F02C4ADB8F00432F8D /* SwiftUIScrollOffset in Frameworks */ = {isa = PBXBuildFile; productRef = 64A660EF2C4ADB8F00432F8D /* SwiftUIScrollOffset */; };
 		64CBF6602BF7C9A400ABDA83 /* mtListAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF65F2BF7C9A400ABDA83 /* mtListAppApp.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64544AF32C9070B90006AE71 /* CollapsibleHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleHeaderViewModel.swift; sourceTree = "<group>"; };
 		646734CE2C00B11700F1BA7E /* DummyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyFile.swift; sourceTree = "<group>"; };
 		64CBF65C2BF7C9A400ABDA83 /* mtListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CBF65F2BF7C9A400ABDA83 /* mtListAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mtListAppApp.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				64CBF6632BF7C9A500ABDA83 /* Assets.xcassets */,
 				64CBF6652BF7C9A500ABDA83 /* Preview Content */,
 				646734CE2C00B11700F1BA7E /* DummyFile.swift */,
+				64544AF32C9070B90006AE71 /* CollapsibleHeaderViewModel.swift */,
 			);
 			path = mtListApp;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64544AF42C9070B90006AE71 /* CollapsibleHeaderViewModel.swift in Sources */,
 				64CBF6622BF7C9A400ABDA83 /* ContentView.swift in Sources */,
 				646734CF2C00B11700F1BA7E /* DummyFile.swift in Sources */,
 				64CBF6602BF7C9A400ABDA83 /* mtListAppApp.swift in Sources */,
