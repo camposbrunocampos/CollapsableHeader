@@ -12,7 +12,7 @@ import SwiftUIScrollOffset
 struct mtListAppApp: App {
     var body: some Scene {
         WindowGroup {
-            CollapsibleHeaderList()
+            CollapsibleHeaderList(viewModel: CollapsibleHeaderViewModel())
         }
     }
 }

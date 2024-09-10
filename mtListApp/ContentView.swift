@@ -9,8 +9,12 @@ public struct CollapsibleHeaderList: View {
     @State private var animationDuration: TimeInterval = 0.2
     @State private var lastAnimationDate: Date?
     private var expandedHeight: CGFloat = 40.0
-    @StateObject var viewModel = CollapsibleHeaderViewModel()
+    @ObservedObject var viewModel: CollapsibleHeaderViewModel
 
+    public init(viewModel: CollapsibleHeaderViewModel) {
+        self.viewModel = viewModel
+    }
+    
     // MARK: - View
     public var body: some View {
         VStack {
@@ -19,10 +23,8 @@ public struct CollapsibleHeaderList: View {
                 .frame(height: currentHeight)
             List {
                 ForEach(items, id: \.self) { item in
-                    Button {
-                    } label: {
-                        Text("Item \(item)")
-                    }.onAppear {
+                    Text("Item \(item)")
+                    .onAppear {
                         viewModel.onCellAppear(index: item)
                     }
                 }
@@ -31,7 +33,6 @@ public struct CollapsibleHeaderList: View {
         .listStyle(.plain)
         .onReceive(viewModel.$state) { state in
             DispatchQueue.main.async {
-
                 switch(state) {
                 case .collapse:
                     collapseHeader()
