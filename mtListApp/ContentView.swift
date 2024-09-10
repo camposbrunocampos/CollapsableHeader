@@ -24,7 +24,6 @@ public struct CollapsibleHeaderList: View {
                         Text("Item \(item)")
                     }.onAppear {
                         viewModel.onCellAppear(index: item)
-                        print("@@ item \(item) appeared")
                     }
                 }
             }
@@ -35,10 +34,8 @@ public struct CollapsibleHeaderList: View {
 
                 switch(state) {
                 case .collapse:
-                    print("@@willcollapse")
                     collapseHeader()
                 case .expand:
-                    print("@@willexpand")
                     expandHeader()
                 case .initial: 
                     break
