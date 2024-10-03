@@ -11,29 +11,25 @@ public struct CollapsibleHeaderList: View {
     private var expandedHeight: CGFloat = 40.0
 
     // MARK: - View
+    /*
+     let offset = self.calculateContentOffset(fromOutsideProxy: outsideProxy, insideProxy: insideProxy)
+     Color.clear.preference(
+         key: ScrollOffsetInfoPreferenceKey.self,
+         value: ScrollOffsetInfo(offset: offset, offsetToBottom: self.calculateOffsetToBottom(fromOutsideProxy: outsideProxy, insideProxy: insideProxy), scrollableContent: max(0, insideProxy.size.height - outsideProxy.size.height))
+     )
+     */
     public var body: some View {
         VStack {
             Rectangle()
                 .foregroundColor(.pink)
                 .frame(height: currentHeight)
             GeometryReader { outsideProxy in
-                ScrollView {
-                    ZStack(alignment: .top) {
-                        GeometryReader { insideProxy in
-                            let offset = self.calculateContentOffset(fromOutsideProxy: outsideProxy, insideProxy: insideProxy)
-                            Color.clear.preference(
-                                key: ScrollOffsetInfoPreferenceKey.self,
-                                value: ScrollOffsetInfo(offset: offset, offsetToBottom: self.calculateOffsetToBottom(fromOutsideProxy: outsideProxy, insideProxy: insideProxy), scrollableContent: max(0, insideProxy.size.height - outsideProxy.size.height))
-                            )
-                        }
-                        LazyVStack {
-                            ForEach(items, id: \.self) { item in
-                                Button {
-                                } label: {
-                                    Text("Item \(item)")
-                                }
-                            }
-                        }
+                List {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: ScrollOffsetInfoPreferenceKey.self, value: geometry.frame(in: .named("ScrollView")).origin.y)
+                    }
+                    ForEach(items, id: \.self) { item in
+                        Button {} label: { Text("Item \(item)") }
                     }
                 }
             }
@@ -53,17 +49,11 @@ public struct CollapsibleHeaderList: View {
         return offsetToBottom
     }
 
-    private func updateHeaderHeightOnOffsetChange(_ offsetInfo: ScrollOffsetInfo) {
+    private func updateHeaderHeightOnOffsetChange(_ offsetInfo: CGFloat) {
         DispatchQueue.main.async {
-            let isInitialPosition = offsetInfo.offset == 0 && lastOffset == 0
             guard didFinishLastAnimation() else { return }
 
-            if isInitialPosition {
-                expandHeader()
-                return
-            }
-
-            switch scrollDirection(offsetInfo.offset) {
+            switch scrollDirection(offsetInfo) {
             case .up:
                 collapseHeader()
 
@@ -122,15 +112,9 @@ enum ScrollDirection: Equatable {
     case insignificant
 }
 
-public struct ScrollOffsetInfo: Equatable {
-    public let offset: CGFloat
-    public let offsetToBottom: CGFloat
-    public let scrollableContent: CGFloat
-}
-
 public struct ScrollOffsetInfoPreferenceKey: PreferenceKey {
-    public static var defaultValue: ScrollOffsetInfo = ScrollOffsetInfo(offset: 0, offsetToBottom: 0, scrollableContent: 0)
+    public static var defaultValue: CGFloat = 0
 
-    public static func reduce(value: inout ScrollOffsetInfo, nextValue: () -> ScrollOffsetInfo) {
+    public static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
     }
 }
